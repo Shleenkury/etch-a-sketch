@@ -1,21 +1,33 @@
-#container {
-    display: flex;
-    flex-wrap: wrap;
-    height: 960px;
-    width: 960px;
-    border: solid black 2px;
-    margin: 0;
-    padding: 0;
-
+body {
+   background-color: rgb(207, 207, 252);
 }
 
 
-.square {
+
+
+#container {
     display: flex;
-    flex-grow: 1;
+    flex-wrap: wrap;
+    height: 975px;
+    width: 975px;
+    border: solid black 2px;
+    margin: 0;
+    padding: 0;
+    gap: 1px;
+    align-content: flex-start;
+    overflow: hidden;
+
+}
+
+ 
+.square {
+    
+    height: 60px;
+    width: 60px;
     background-color: red;
-    transition: opacity 75ms;
+    transition: opacity 1ms;
     opacity: 0;
+    min-width: 0;
 }
 
 .square:hover {
