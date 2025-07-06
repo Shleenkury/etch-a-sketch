@@ -2,7 +2,10 @@ const Button = document.getElementById("amount");
 
 let userInput = "";
 
+
 let Container = document.getElementById("container");
+
+let containerSize = Container.clientWidth;
 
 const Square = document.querySelector(".square");
 Square.addEventListener("mouseenter",
@@ -12,11 +15,32 @@ Square.addEventListener("mouseenter",
   { once: true }
 );
 
+ function startSquares(){
+
+    let ogDiv = document.createElement("div");
+    ogDiv.classList.add("square");
+    Container.appendChild(ogDiv);
+    ogDiv.addEventListener(
+      "mouseenter", () => {
+        ogDiv.style.opacity = 1;
+      },
+      {once: true}
+    );
+ }
+
+ for (i = 0; i<16 * 16 ; i++){
+  startSquares();
+ }
+
+
+ 
 function addSquare(squareSize) {
   const newDiv = document.createElement("div");
   newDiv.classList.add("square");
+
   newDiv.style.width = `${squareSize}px`;
   newDiv.style.height = `${squareSize}px`;
+
   Container.appendChild(newDiv);
   newDiv.addEventListener(
     "mouseenter",
@@ -26,6 +50,8 @@ function addSquare(squareSize) {
     { once: true }
   );
 }
+
+
 
 //divs added
 
@@ -40,6 +66,7 @@ Button.addEventListener("click", () => {
 
   if (userInput > 100) {
     alert("Number less than 100 please");
+    return;
   }
 
   let squaresPerRow = userInput;
@@ -67,14 +94,12 @@ Button.addEventListener("click", () => {
   }
 });
 
-let containerSize = Container.clientWidth;
 
-let squaresPerRow = userInput;
 
-let gap = 1;
-let gapAmount = gap * (squaresPerRow - 1);
 
-let squareSize = Math.floor((containerSize - gapAmount) / squaresPerRow);
 
-Container.style.width = `${squareSize * squaresPerRow + gapAmount}px`;
-Container.style.height = `${squareSize * squaresPerRow + gapAmount}px`;
+
+
+
+
+
